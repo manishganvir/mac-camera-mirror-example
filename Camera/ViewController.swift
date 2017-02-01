@@ -24,27 +24,24 @@ class ViewController: NSViewController {
     
     func startCamera() {
         
-        var frontCamera : AVCaptureDevice?
+        var camDevice : AVCaptureDevice?
         let devices = AVCaptureDevice.devices()
         
-        // Loop through all the capture devices
         for device in devices! {
-            // Make sure this particular device supports video
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                frontCamera = device as? AVCaptureDevice
-                if frontCamera != nil  {
+                camDevice = device as? AVCaptureDevice
+                if camDevice != nil  {
                     
-                    let frontVideoSession = AVCaptureSession()
-                    frontVideoSession.sessionPreset = AVCaptureSessionPresetHigh
+                    let VideoSession = AVCaptureSession()
+                    VideoSession.sessionPreset = AVCaptureSessionPresetHigh
                     
                     do {
-                        let input = try AVCaptureDeviceInput(device: frontCamera)
+                        let input = try AVCaptureDeviceInput(device: camDevice)
                         
                         
-                        frontVideoSession.addInput(input)
+                        VideoSession.addInput(input)
                         
-                        self.cameraLayer = AVCaptureVideoPreviewLayer(session: frontVideoSession)
-                        self.cameraLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+                        self.cameraLayer = AVCaptureVideoPreviewLayer(session: VideoSession)
                         print(" connection " , self.cameraLayer!.connection.isVideoMirroringSupported , self.cameraLayer!.connection.automaticallyAdjustsVideoMirroring);
                         
                         if (self.cameraLayer!.connection.isVideoMirroringSupported)
@@ -56,11 +53,8 @@ class ViewController: NSViewController {
                         
                         self.view.layer = self.cameraLayer!
                         self.view.wantsLayer = true
-                        
-                        //let priority = DISPATCH_QUEUE_PRIORITY_HIGH
-                        //dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                        frontVideoSession.startRunning()
-                        //}
+
+                        VideoSession.startRunning()
                     }catch _ {
                         
                     }
