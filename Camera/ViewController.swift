@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  Camera
 //
-//  Created by Ganvir, Manish (Contractor) on 1/31/17.
-//  Copyright © 2017 Comcast. All rights reserved.
+//  Created by Ganvir, Manish  on 1/31/17.
 //
 
 import Cocoa

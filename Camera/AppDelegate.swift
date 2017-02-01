@@ -2,8 +2,6 @@
 //  AppDelegate.swift
 //  Camera
 //
-//  Created by Ganvir, Manish (Contractor) on 1/31/17.
-//  Copyright © 2017 Comcast. All rights reserved.
 //
 
 import Cocoa
